@@ -8,6 +8,41 @@ public class ArrayAndStringV {
 		//Default constructor
 	}
 	
+	//Special Problem
+	//Write a method that can reserve number. Note: cant use data structure or convert into string at all
+	
+	/**
+	 * @param int number
+	 * @return int
+	 **/
+	
+	public int reverseNumber(int number)
+	{
+		if(number < 0)
+			return number;
+		int result = 0;
+		int remainder = 0;
+		while(number > 0)
+		{
+			remainder = number % 10;
+			number = number / 10;
+			result = result * 10 + remainder;
+		}
+		
+		return result;
+	}
+	
+	public int reverseNumberRecursive(int number, int result)
+	{
+		if(number == 0)
+		{
+			return result + number;
+		}
+		int remainder = number % 10;
+		return (reverseNumberRecursive(number / 10, result * 10 + remainder));
+	}
+	
+	
 	// Problem 1
 	//Implement an algorithm to determine if a sting has all unique character. 
 	//What if you cannot use additional data structure ?
@@ -20,7 +55,7 @@ public class ArrayAndStringV {
 	/**
 	 * @param String str
 	 * @return boolean
-	 * */
+	 **/
 	public boolean isUniqueChars(String str) 
 	{
 		if(str.length() > 256)
@@ -113,6 +148,99 @@ public class ArrayAndStringV {
 	// space at the end of the string to hold the additional characters, that you are given the true length of the string.
 	// Note that if implement in java, please use a character array so that you can perform this operation in place.
 	// Example Input "Mr John Smith   ". Output: "Mr%20John%20Smith"
+	
+	public String replaceSingleSpace(char [] str, int length) //Replace single space with %20
+	{
+		StringBuilder result = new StringBuilder();
+		for(int i = 0; i < length; i++)
+		{
+			if(str[i] == ' ')
+			{
+				result.append("%20");
+			}
+			else
+			{
+				result.append(str[i]);
+			}
+		}
+		
+		return result.toString();
+	}
+	
+	public String replaceAllSpace(char [] str, int length) //Replace all the space in between with %20
+	{
+		StringBuilder result = new StringBuilder();
+		int i = 0;
+		while(i < length)
+		{
+			if(str[i] == ' ')
+			{
+				i++;
+				while(str[i] == ' ')
+				{
+					i++;
+				}
+				result.append("%20");
+			}
+			else
+			{
+				result.append(str[i]);
+				i++;
+			}
+		}
+		
+		return result.toString();
+	}
+	
+	//Problem 5 
+	//Implement a method to perform basic string compression using the counts of repeated characters. 
+	//For example, the string aabcccccaaa would become a2b1c5a3. If the compressed string would not become smaller
+	//than the original string, your method should return the original string.
+	
+	//aabcccccaaa -> a2b1c5a3
+	public String compressString(String str) //Assume first character in the string alway is a letter
+	{
+		StringBuilder result = new StringBuilder();
+	    if(str.length() == 0)
+	    {
+	        return str;
+	    }
+	    else if(str.length() == 1)
+	    {
+	        return str + "1";
+	    }
+	    else
+	    {
+	        int i = 1; 
+	        char currentChar = str.charAt(i);
+	        result.append(currentChar);
+	        int count = 1;
+	        while(i < str.length())
+	        {
+	            if(currentChar == str.charAt(i))
+	            {
+	                count++;
+	            }
+	            else
+	            {
+	                result.append(count);
+	                currentChar = str.charAt(i);
+	                result.append(currentChar);
+	                count = 1;
+	            }
+	            i++;
+	            if(i >= str.length())
+	            {
+	                result.append(count);
+	            }
+	        }
+	    
+	    }
+	    
+	    return result.toString();
+	}
+	
+	
 	
 }
 
