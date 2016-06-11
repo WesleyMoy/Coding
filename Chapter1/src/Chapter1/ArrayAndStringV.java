@@ -1,5 +1,8 @@
 package Chapter1;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Stack;
+
 import javax.swing.text.AbstractDocument.LeafElement;
 
 public class ArrayAndStringV {
@@ -240,6 +243,76 @@ public class ArrayAndStringV {
 	    return result.toString();
 	}
 	
+	//Skip problem 6 for now
+	
+	//Problem 7 
+	//Write an algorithm that if an element in an MxN matrix is 0, its entire row and column are set to 0
+	
+	public int [][] optimizeMatrix (int [][] matrix)
+	{
+		//Identify row and column that need to set to zero at first
+		ArrayList<Integer> rows = new ArrayList();
+		ArrayList<Integer> columns = new ArrayList();
+		
+		for(int i = 0; i < matrix.length; i++)
+		{
+			for(int j = 0; j < matrix[i].length; j++)
+			{
+				if(matrix[i][j] == 0)
+				{
+					if(rows.contains(i) == false)
+						rows.add(i);
+					if(columns.contains(j)== false)
+						columns.add(j);
+				}
+			}
+		}
+		
+		//Set 0 for rows
+		for(int i = 0; i < rows.size(); i++)
+		{
+			int row = rows.get(i);
+			for(int j = 0; j < matrix[row].length; j++)
+			{
+				matrix[row][j] = 0;
+			}
+		}
+		//Set 0 for columns
+		for(int i = 0; i < columns.size(); i++)
+		{
+			int column = columns.get(i);
+			for(int j = 0; j < matrix.length; j++)
+			{
+				matrix[j][column] = 0;
+			}
+		}
+		
+		return matrix;
+	}
+	
+	
+	//Problem 8
+	//Assume you have a method isSubstring which checks if one word is a substring of another.
+	//Given two strings, s1 and s2 write code to check if s2 is a rotation of s1 using only one call to isSubstring
+	//e.g water bottle is a rotation of "erbottlewat")
+	
+	public boolean isRotation(String s1, String s2)
+	{
+		int len1 = s1.length();
+		if(len1 == s2.length() && len1 > 0)
+		{
+			String s1s1 = s1 + s1;
+			return isSubString(s1s1,s2);
+		}
+		
+		
+		return false;
+	}
+	
+	public boolean isSubString(String s1, String s2)
+	{
+		return true;
+	}
 	
 	
 }
