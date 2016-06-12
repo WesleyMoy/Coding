@@ -1,5 +1,6 @@
 import Chapter1.ArrayAndStringV;
 import Chapter2.LinkedListsV;
+import Chapter2.NodeV;
 import Chapter2.SingleLinkedListV;
 
 public class MainClass {
@@ -44,11 +45,18 @@ public class MainClass {
 		}
 		*/
 		
+		/* ------------------- Chapter 2 ----------------------*/
+		
+		/*
+		//Problem 1 Test
 		SingleLinkedListV test = new SingleLinkedListV();
 		test.insertNodeAtTail(1);
 		test.insertNodeAtTail(2);
 		test.insertNodeVAtHead(0);
+		test.insertNodeAtTail(2);
 		test.insertNodeAtTail(1);
+		test.insertNodeAtTail(3);
+		test.insertNodeAtTail(4);
 		test.printout();
 		
 		System.out.println();
@@ -56,7 +64,55 @@ public class MainClass {
 		LinkedListsV temp = new LinkedListsV();
 		temp.removeDuplicates(test);
 		test.printout();
+		*/
 		
+		//Problem 5 a
+		/*
+		SingleLinkedListV test1 = new SingleLinkedListV();
+		test1.insertNodeAtTail(1);
+		test1.insertNodeAtTail(1);
+		test1.insertNodeAtTail(1);
+		test1.insertNodeAtTail(1);
+		
+		SingleLinkedListV test2 = new SingleLinkedListV();
+		test2.insertNodeAtTail(2);
+		test2.insertNodeAtTail(2);
+		test2.insertNodeAtTail(2);
+		
+		LinkedListsV temp = new LinkedListsV();
+		SingleLinkedListV test3 = temp.sumLinkedList(test1, test2);
+		test3.printout();
+		*/
+		
+		//Problem 5 b
+		/*
+		SingleLinkedListV test1 = new SingleLinkedListV();
+		test1.insertNodeAtTail(3);
+		test1.insertNodeAtTail(1);
+		test1.insertNodeAtTail(4);
+		test1.insertNodeAtTail(1);
+		
+		SingleLinkedListV test2 = new SingleLinkedListV();
+		test2.insertNodeAtTail(2);
+		test2.insertNodeAtTail(2);
+		test2.insertNodeAtTail(2);
+		
+		LinkedListsV temp = new LinkedListsV();
+		SingleLinkedListV test3 = temp.sumLinkedList1(test1, test2);
+		test3.printout();
+		*/
+		
+		//Problem 6
+		
+		SingleLinkedListV test1 = new SingleLinkedListV();
+		test1.insertNodeAtTail(1);
+		test1.insertNodeAtTail(2);
+		test1.insertNodeAtTail(3);
+		test1.circular(4);
+		//test1.printCircular();
+		LinkedListsV temp = new LinkedListsV();
+		NodeV result = temp.detectCircular(test1);
+		System.out.println(result.getData());
 	}
 
 }

@@ -4,11 +4,19 @@ public class SingleLinkedListV {
 
 	private NodeV head;
 	private int size;
+	private int data;
 	
 	public SingleLinkedListV()
 	{
 		head = null;
 		size = 0;
+	}
+	
+	public int getData()
+	{
+		if(head != null)
+			return head.getData();
+		return 0;
 	}
 	
 	public NodeV getHead()
@@ -70,6 +78,24 @@ public class SingleLinkedListV {
 		}
 	}
 	
+	public void circular(int data)
+	{
+		NodeV newNode = new NodeV(data);
+		NodeV temp = head;
+		int count = 1;
+		while(temp.getNext() != null)
+		{
+			if(count == 2)
+			{
+				newNode.setNext(temp);
+			}
+			temp = temp.getNext();
+			count++;
+		}
+		temp.setNext(newNode);
+		size++;
+	}
+	
 	public void deleteRandomNodeV(int data)
 	{
 		NodeV temp = head;
@@ -96,14 +122,24 @@ public class SingleLinkedListV {
 	public void printout()
 	{
 		NodeV temp = head;
-		while(temp.getNext() != null)
+		while(temp != null)
 		{
 			System.out.println(temp.getData());
 			temp = temp.getNext();
 		}
-		System.out.println(temp.getData());
 	}
 	
+	public void printCircular()
+	{
+		NodeV temp = head;
+		int count = 1;
+		while(temp != null && count < 6)
+		{
+			System.out.println(temp.getData());
+			temp = temp.getNext();
+			count++;
+		}
+	}
 	
 	public int getSize()
 	{
